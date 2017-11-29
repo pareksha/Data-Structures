@@ -18,7 +18,7 @@ void display(){
   printf("\n");
 }
 
-void insertion(struct node* target_pointer){
+void insert(struct node* target_pointer){
   bool flag;
   struct node* pre;
   struct node* cur;
@@ -60,17 +60,48 @@ void insertion(struct node* target_pointer){
   }
 }
 
+void delete(struct node* target_pointer){
+  struct node* pre;
+  struct node* cur;
+  bool flag;
+  flag = false;
+  pre = NULL;
+  cur = START;
+  while(cur != NULL){
+    if(target_pointer -> data == cur -> data){
+      if(pre == NULL)
+        START = cur -> link;
+      else
+        pre -> link = cur -> link;
+      flag = true;
+      break;
+    }
+    else if(target_pointer -> data > cur -> data){
+      pre = cur;
+      cur = cur -> link;
+    }
+    else
+      break;
+  }
+  if (flag == false)
+    printf("Required Target not found");
+  else
+    printf("\nNumber deleted\nList becomes\n");
+}
+
 void main(){
   struct node n1,n2,n3,n4,n5;
   START = NULL;
-  insertion(&n1);
+  insert(&n1);
   display();
-  insertion(&n2);
+  insert(&n2);
   display();
-  insertion(&n3);
+  insert(&n3);
   display();
-  insertion(&n4);
+  delete(&n2);
   display();
-  insertion(&n5);
+  insert(&n4);
+  display();
+  insert(&n5);
   display();
 }
