@@ -41,3 +41,9 @@ class BST(object):
         self.print_postorder(root.left_child)
         self.print_postorder(root.right_child)
         print(root.data, end='    ')
+
+    def find_height(self, root):
+        if root is None:
+            return -1
+        else:
+            return max(self.find_height(root.left_child), self.find_height(root.right_child)) + 1

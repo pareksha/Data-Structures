@@ -14,3 +14,5 @@ tree.print_inorder(tree.root)
 print()
 tree.print_postorder(tree.root)
 print()
+
+print(tree.find_height(tree.root))
