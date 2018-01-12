@@ -47,3 +47,15 @@ class BST(object):
             return -1
         else:
             return max(self.find_height(root.left_child), self.find_height(root.right_child)) + 1
+
+    def find_minimum(self, root):
+        if root.left_child is None:
+            return root.data
+        else:
+            return self.find_minimum(root.left_child)
+
+    def find_maximum(self, root):
+        if root.right_child is None:
+            return root.data
+        else:
+            return self.find_maximum(root.right_child)
