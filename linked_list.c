@@ -89,6 +89,22 @@ void delete(struct node* target_pointer){
     printf("\nNumber deleted\nList becomes\n");
 }
 
+void reverse(){
+  struct node* pre = START;
+  struct node* cur = START -> link;
+  while(pre!=NULL){
+    if(pre==START) {
+      pre->link = NULL;
+    }
+    else pre->link = START;
+    START = pre;
+    pre = cur;
+    if(cur!=NULL)
+    cur = cur->link;
+  }
+  return;
+}
+
 void main(){
   struct node n1,n2,n3,n4,n5;
   START = NULL;
@@ -103,5 +119,7 @@ void main(){
   insert(&n4);
   display();
   insert(&n5);
+  display();
+  reverse();
   display();
 }
