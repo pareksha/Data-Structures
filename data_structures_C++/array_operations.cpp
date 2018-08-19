@@ -118,28 +118,74 @@ class Array {
 };
 
 int main() {
-    Array<int> int_arr;
-    int_arr.insert(30);
-    int_arr.insert(10);
-    int_arr.insert(20);
-    int_arr.insert(5);
-    int_arr.delete_value(70);
-    int_arr.selection_sort();
-    int_arr.traverse();
-    int x = int_arr.binary_search(30);
-    cout << x << endl;
-
     Array<char> char_arr;
-    char_arr.insert('C');
-    char_arr.insert('q');
-    char_arr.insert('B');
-    char_arr.insert('y');
-    char_arr.update('x', 3);
-    char_arr.delete_value('A');
-    x = char_arr.binary_search('x');
-    cout << x << endl;
-    char_arr.bubble_sort();
-    x = char_arr.binary_search('q');
-    cout << x << endl;
-    char_arr.traverse();
+    Array<int> int_arr;
+    int number, value, x, choice;
+    char repeat, val, y;
+    do{
+        cout << "Perform operation on which array? - 1. Numerical data OR 2. character data.\n";
+        cin >> choice;
+        cout << "\nWhich operation do you wish to perform on your array?\n1. Insertion\n2. Deletion\n3. Search\n4. Sort\n";
+        cin >> number;
+        switch(number) {
+            case 1:
+                cout << "Enter the value you want to insert: ";
+                if(choice == 1) {
+                    cin >> value;
+                    int_arr.insert(value);
+                    int_arr.traverse();
+                }
+                else if(choice == 2) {
+                    cin >> val;
+                    char_arr.insert(val);
+                    char_arr.traverse();
+                }
+                break;
+            case 2:
+                cout << "Enter the value you want to delete: ";
+                if(choice == 1) {
+                    cin >> value;
+                    int_arr.delete_value(value);
+                    int_arr.traverse();
+                }
+                else if(choice == 2) {
+                    cin >> val;
+                    char_arr.delete_value(val);
+                    char_arr.traverse();
+                }
+                break;
+            case 3:
+                cout << "Enter the value you want to search for: ";
+                if(choice == 1) {
+                    cin >> value;
+                    x = int_arr.binary_search(value);
+                    if(x == 1) cout << value << " present in arr!\n";
+                    else cout << value << " not present in arr!\n";
+                }
+                else if(choice == 2) {
+                    cin >> val;
+                    y = char_arr.binary_search(val);
+                    if(y == 1) cout << val << " present in arr!\n";
+                    else cout << val << " not present in arr!\n";
+                }
+                break;
+            case 4:
+                if(choice == 1) {
+                    int_arr.selection_sort();
+                    int_arr.traverse();
+                }
+                else if(choice == 2) {
+                    char_arr.selection_sort();
+                    char_arr.traverse();
+                }
+                break;
+            default:
+                cout << "Entered option is invalid, want to try one more time? (y/n) ";
+                cin >> repeat;
+        }
+        if(number==1 || number==2 || number==3 || number==4) {
+            cout << "Want to perform another operation? (y/n) ";
+            cin >> repeat;
+        }
+    }while(repeat == 'y');
 }
