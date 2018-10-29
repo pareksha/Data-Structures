@@ -18,6 +18,24 @@ class BST {
             cout << root_ -> data << endl;
             displayHelper(root_ -> left, spaces);
         }
+        void preorderTraversalHelper(struct node* root_) {
+            if(!root_) return;
+            cout << root_ -> data << "\t";
+            preorderTraversalHelper(root_ -> left);
+            preorderTraversalHelper(root -> right);
+        }
+        void postorderTraversalHelper(struct node* root_) {
+            if(!root_) return;
+            postorderTraversalHelper(root_ -> left);
+            postorderTraversalHelper(root -> right);
+            cout << root_ -> data << "\t";
+        }
+        void inorderTraversalHelper(struct node* root_) {
+            if(!root_) return;
+            inorderTraversalHelper(root_ -> left);
+            cout << root_ -> data << "\t";
+            inorderTraversalHelper(root -> right);
+        }
         int flag;
     public:
         BST() {
@@ -65,6 +83,15 @@ class BST {
         }
         void display() {
             displayHelper(root, 0);
+        }
+        void preorderTraversal() {
+            preorderTraversalHelper(root);
+        }
+        void inorderTraversal() {
+            inorderTraversalHelper(root);
+        }
+        void postorderTraversal() {
+            postorderTraversalHelper(root);
         }
         struct node* search(int value) {
             struct node* parent = NULL;
